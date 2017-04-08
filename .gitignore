@@ -1,0 +1,15 @@
+# default
+.DS_Store
+bin
+node_modules
+
+# claudia
+claudia.json
+
+# coverage
+.nyc_output
+.coveralls.yml
+coverage
+
+# tests
+tests/config/.env
