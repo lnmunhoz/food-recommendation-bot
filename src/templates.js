@@ -38,8 +38,14 @@ export const direction = (place) => {
   .get()
 }
 
+export const nothingAround = () => {
+  return new fbTemplate.Image('https://media.giphy.com/media/xme2XN3AzQOEU/giphy.gif')
+  .get()
+}
+
 export default {
   shareLocation,
   direction,
-  placesOptions
+  placesOptions,
+  nothingAround,
 }

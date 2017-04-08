@@ -4,8 +4,6 @@ import templates from './templates'
 
 import { isLocationMessage, getCoordinates } from './helpers'
 
-const sessions = {}
-
 export const handleAPIAI = (res) => {
   if (res) {
     if (res.result.action === 'hungry') {
@@ -37,7 +35,6 @@ export default (request) => {
 
   if (text && !postback) {
     console.log('[Entering API.AI Flow]')
-    sessions[sender] = {}
 
     return apiAI.query(text, sender).then(handleAPIAI)
   }
@@ -50,11 +47,17 @@ export default (request) => {
       const { lat, long } = getCoordinates(originalRequest)
 
       return places.nearbySearch({lat, long}).then(res => {
-        sessions[sender].page = 0
+
+        if (res.results && res.results.length > 0) {
+          return [
+            'Ok this is the places I found 👇',
+            templates.placesOptions(res.results)
+          ]
+        }
 
         return [
-          'Ok this is the places I found 👇',
-          templates.placesOptions(res.results)
+          'Sorry I couldn\'t find places around you open now...',
+          templates.nothingAround(),
         ]
       })
     }
