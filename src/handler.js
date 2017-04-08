@@ -11,7 +11,7 @@ export const handleAPIAI = (res) => {
     if (res.result.action === 'hungry') {
       return templates.shareLocation()
     }
-    return 'I don\'t understand...'
+    return 'I don\'t understand... Try to say something like "I am hungry" or "food".'
   }
   return 'I don\'t understand, sorry...'
 }
