@@ -9,7 +9,9 @@
   "scripts": {
     "transpile": "babel --presets es2015 src --out-dir bin",
     "create": "npm run transpile && claudia create --region ap-southeast-1 --api-module bin/bot",
-    "update": "npm run transpile && claudia update",
+    "update:live": "npm run transpile && claudia update",
+    "update:dev": "npm run transpile && claudia update --version development",
+    "update:config:dev": "claudia update --version development --configure-fb-bot",
     "test": "mocha tests/**/*.test.js --opts tests/config/mocha.opts",
     "test:coverage": "nyc npm test",
     "coverage": "nyc report --reporter=text-lcov | coveralls"

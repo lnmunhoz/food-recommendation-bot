@@ -3,6 +3,9 @@
 bin
 node_modules
 
+# messenger
+scripts
+
 # claudia
 claudia.json
 
